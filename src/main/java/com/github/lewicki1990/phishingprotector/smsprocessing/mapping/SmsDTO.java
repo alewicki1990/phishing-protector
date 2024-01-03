@@ -1,13 +1,11 @@
-package com.github.lewicki1990.phishingprotector;
+package com.github.lewicki1990.phishingprotector.smsprocessing.mapping;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder(access = AccessLevel.PUBLIC)
 public class SmsDTO {
 
     private long id;

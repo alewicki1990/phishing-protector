@@ -1,21 +1,22 @@
-package com.github.lewicki1990.phishingprotector;
+package com.github.lewicki1990.phishingprotector.message;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @Entity
 @Table
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Sms {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name="attribute")
+    @Column(name="attributes")
     private String attributesJson;
 }

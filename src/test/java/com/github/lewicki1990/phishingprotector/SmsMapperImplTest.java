@@ -1,11 +1,15 @@
 package com.github.lewicki1990.phishingprotector;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.lewicki1990.phishingprotector.message.Sms;
+import com.github.lewicki1990.phishingprotector.smsprocessing.mapping.SmsDTO;
+import com.github.lewicki1990.phishingprotector.smsprocessing.mapping.SmsMapper;
+import com.github.lewicki1990.phishingprotector.smsprocessing.mapping.SmsMapperImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SmsMapperTest {
+class SmsMapperImplTest {
 
     @Test
     void convertingSmsToSmsDTOShouldReturnSmsDTOObjectWithTheSameValuesAsOriginalSms() {
@@ -19,7 +23,7 @@ class SmsMapperTest {
 
         Sms sms = new Sms(id, attributesJson);
 
-        SmsMapper smsMapper = new SmsMapper();
+        SmsMapper smsMapper = new SmsMapperImpl();
 
         // when
         SmsDTO smsDTO;
@@ -56,7 +60,7 @@ class SmsMapperTest {
                 "\"" + unknownFieldName + "\":" + recipient + "," +
                 "\"message\":\"" + message + "\"}";
         Sms smsWithJsonWithUnknownFieldName = new Sms(id, jsonWithUnknownFieldName);
-        SmsMapper smsMapper = new SmsMapper();
+        SmsMapper smsMapper = new SmsMapperImpl();
 
         // when + then
         assertThrows(JsonProcessingException.class, () -> smsMapper.convertSmsToSmsDTO(smsWithJsonWithUnknownFieldName));
