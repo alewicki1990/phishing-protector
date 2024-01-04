@@ -10,7 +10,7 @@ public class LastProcessedSmsId {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private final Long id;
 
     public LastProcessedSmsId(){
         this.id=1L;
