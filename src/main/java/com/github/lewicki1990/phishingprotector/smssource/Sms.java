@@ -1,4 +1,4 @@
-package com.github.lewicki1990.phishingprotector.message;
+package com.github.lewicki1990.phishingprotector.smssource;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

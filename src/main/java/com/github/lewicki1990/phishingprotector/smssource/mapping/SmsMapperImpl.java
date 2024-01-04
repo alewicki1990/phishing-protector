@@ -1,8 +1,8 @@
-package com.github.lewicki1990.phishingprotector.smsprocessing.mapping;
+package com.github.lewicki1990.phishingprotector.smssource.mapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.lewicki1990.phishingprotector.message.Sms;
+import com.github.lewicki1990.phishingprotector.smssource.Sms;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 

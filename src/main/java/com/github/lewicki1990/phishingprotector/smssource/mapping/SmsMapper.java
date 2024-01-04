@@ -1,7 +1,7 @@
-package com.github.lewicki1990.phishingprotector.smsprocessing.mapping;
+package com.github.lewicki1990.phishingprotector.smssource.mapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.github.lewicki1990.phishingprotector.message.Sms;
+import com.github.lewicki1990.phishingprotector.smssource.Sms;
 
 public interface SmsMapper {
     SmsDTO convertSmsToSmsDTO(Sms sms) throws JsonProcessingException;

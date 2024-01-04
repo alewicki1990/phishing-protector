@@ -1,4 +1,4 @@
-package com.github.lewicki1990.phishingprotector.smsprocessing.mapping;
+package com.github.lewicki1990.phishingprotector.smssource.mapping;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
