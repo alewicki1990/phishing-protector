@@ -12,6 +12,6 @@ public interface SmsSourceRepository extends JpaRepository<Sms, Long> {
     @Query("SELECT s FROM Sms s WHERE s.id > :lastProcessedId ORDER BY s.id ASC")
     Page<Sms> findBatchOfRecords(@Param("lastProcessedId") long lastProcessedId, Pageable pageable);
 
-    @Query("SELECT CASE WHEN COUNT(s) = 1 THEN true ELSE false END FROM Sms s WHERE s.id = :id")
-    boolean existsById(long id);
+    @Query("SELECT CASE WHEN COUNT(s) > 0 THEN true ELSE false END FROM Sms s WHERE s.id > :id")
+    boolean areExistAnyRecordWitIdGreaterThan(long id);
 }

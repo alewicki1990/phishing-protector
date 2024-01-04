@@ -42,8 +42,8 @@ public class SmsSourceService {
         log.info("smsId={} Sms has been deleted", smsId);
     }
 
-    @Transactional
-    public boolean isSmsPresentById(long smsId){
-        return smsSourceRepository.existsById(smsId);
+    @Transactional(readOnly = true)
+    public boolean areExistAnyRecordWitIdGreaterThan(long smsId){
+        return smsSourceRepository.areExistAnyRecordWitIdGreaterThan(smsId);
     }
 }
