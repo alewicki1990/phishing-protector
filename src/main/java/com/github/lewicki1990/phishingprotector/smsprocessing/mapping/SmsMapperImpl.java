@@ -6,6 +6,10 @@ import com.github.lewicki1990.phishingprotector.message.Sms;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 @Log4j2
 @Component
 public class SmsMapperImpl implements SmsMapper {
@@ -51,5 +55,19 @@ public class SmsMapperImpl implements SmsMapper {
         SmsAttributes smsAttributes = new SmsAttributes(sender, recipient, smsDTO.getMessage());
 
         return objectMapper.writeValueAsString(smsAttributes);
+    }
+
+    public List<SmsDTO> transformSmsListToSmsDTOList(List<Sms> smses) {
+        return smses.stream()
+                    .map(sms -> {
+                        try {
+                            return convertSmsToSmsDTO(sms);
+                        } catch (Exception e) { // TODO: Find which exceptions should I handle besides JsonProcessingException
+                            log.error("[smsId={} Json can't be processed. It'll be omited.", sms.getId());
+                            return null;
+                        }
+                    })
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
     }
 }
