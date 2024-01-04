@@ -34,3 +34,4 @@ build/
 
 ### db configuration ###
 **/src/main/resources/dbs-config.yml
+**/src/main/resources/urls.yml
