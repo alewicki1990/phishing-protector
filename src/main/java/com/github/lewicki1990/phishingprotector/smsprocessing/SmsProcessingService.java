@@ -26,10 +26,10 @@ public class SmsProcessingService {
             } else if (protectionSubscriptionService.isMessageEqualSubscriptionDeactivationMessage(message)){
                 protectionSubscriptionService.setSubscriptionInactive(sender,smsId);
             } else {
-                log.warn("[sms={}, msisdn={}] Unknown command sent: {}", smsId, sender, recipient);
+                log.warn("[smsId={}, msisdn={}] Unknown command sent: {}", smsId, sender, recipient);
             }
         } else {
-            log.info("[sms={}, msisdn={}] Normal message not to activate service, recipient={}, message={}", smsId, sender, recipient, message);
+            log.info("[smsId={}, msisdn={}] Normal message not to activate service, recipient={}, message={}", smsId, sender, recipient, message);
         }
     }
 }

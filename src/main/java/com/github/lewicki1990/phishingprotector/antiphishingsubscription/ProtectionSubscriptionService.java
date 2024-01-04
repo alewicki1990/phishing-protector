@@ -64,12 +64,12 @@ public class ProtectionSubscriptionService {
             ProtectionSubscription currentSubscription = optionalSubscription.get();
 
             if (currentSubscription.isActive()) {
-                log.info("[sms={}, msisdn={}] Anti Phishing subscription: Activation has been requested but subscription is already active.", smsId, msisdnThatSubmittedRequest);
+                log.warn("[smsId={}, msisdn={}] Anti Phishing subscription: Activation has been requested but subscription is already active.", smsId, msisdnThatSubmittedRequest);
             } else {
                 currentSubscription.setActive();
                 currentSubscription.setChangeDate(LocalDateTime.now());
                 protectionSubscriptionRepository.save(currentSubscription);
-                log.info("[sms={}, msisdn={}] Anti Phishing subscription: Changed to active.", smsId, msisdnThatSubmittedRequest);
+                log.info("[smsId={}, msisdn={}] Anti Phishing subscription: Changed to active.", smsId, msisdnThatSubmittedRequest);
             }
         } else {
             ProtectionSubscription newSubscription = ProtectionSubscription.builder()
@@ -79,7 +79,7 @@ public class ProtectionSubscriptionService {
                                                                            .build();
             protectionSubscriptionRepository.save(newSubscription);
 
-            log.info("[sms={}, msisdn={}] Anti Phishing subscription: Created new active subscription.", smsId,msisdnThatSubmittedRequest);
+            log.info("[smsId={}, msisdn={}] Anti Phishing subscription: Created new active subscription.", smsId,msisdnThatSubmittedRequest);
         }
     }
 
@@ -95,13 +95,13 @@ public class ProtectionSubscriptionService {
             if (subscription.isActive()) {
                 subscription.setInactive();
                 subscription.setChangeDate(LocalDateTime.now());
-                log.info("[sms={}, msisdn={}] Anti Phishing subscription: Changed to inactive.", smsId, msisdnThatSubmittedRequest);
+                log.info("[smsId={}, msisdn={}] Anti Phishing subscription: Changed to inactive.", smsId, msisdnThatSubmittedRequest);
 
             } else {
-                log.warn("[sms={}, msisdn={}] Anti Phishing subscription: Deactivation has been requested but subscription is already inactive", smsId, msisdnThatSubmittedRequest);
+                log.warn("[smsId={}, msisdn={}] Anti Phishing subscription: Deactivation has been requested but subscription is already inactive", smsId, msisdnThatSubmittedRequest);
             }
         } else {
-            log.warn("[sms={}, msisdn={}] Anti Phishing subscription: Subscription never activated before. Request for deactivate denied.", smsId, msisdnThatSubmittedRequest);
+            log.warn("[smsId={}, msisdn={}] Anti Phishing subscription: Subscription never activated before. Request for deactivate denied.", smsId, msisdnThatSubmittedRequest);
         }
     }
 }
