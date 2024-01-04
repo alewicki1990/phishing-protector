@@ -2,7 +2,6 @@ package com.github.lewicki1990.phishingprotector.smssource;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +19,7 @@ public class SmsSourceService {
     private SmsSourceRepository smsSourceRepository;
 
     @Transactional(readOnly = true)
-    public List<Sms> getSortedSmsList(long lastProcessedSmsId, @Value("${data-fetching.batch-size}") int batchSize) {
+    public List<Sms> getSortedSmsList(long lastProcessedSmsId, int batchSize) {
         Pageable pageable = PageRequest.of(0, batchSize, Sort.by("id"));
         Page<Sms> page = smsSourceRepository.findBatchOfRecords(lastProcessedSmsId, pageable);
 
@@ -29,7 +28,7 @@ public class SmsSourceService {
     }
 
     private long getFirstFetchedSmsIdBasingOnLastProcessedSmsId(long lastProcessedSmsId) {
-        return lastProcessedSmsId + 1;
+        return ++lastProcessedSmsId;
     }
 
     private int getNumberOfRecordsInSmsPage(Page<Sms> page) {
@@ -43,7 +42,7 @@ public class SmsSourceService {
     }
 
     @Transactional(readOnly = true)
-    public boolean areExistAnyRecordWitIdGreaterThan(long smsId){
+    public boolean areExistAnySmsWithIdGreaterThan(long smsId){
         return smsSourceRepository.areExistAnyRecordWitIdGreaterThan(smsId);
     }
 }
