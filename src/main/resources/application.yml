@@ -1,3 +1,9 @@
 spring:
   config:
-    import: file:./db-config.yml
+    import: classpath:dbs-config.yml
+
+anti-phishing-subscription:
+  phone-number: 802
+  activation-message: START
+  deactivation-message: STOP
+
