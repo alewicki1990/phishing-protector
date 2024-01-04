@@ -7,3 +7,5 @@ anti-phishing-subscription:
   activation-message: START
   deactivation-message: STOP
 
+data-fetching:
+  batch-size: 100
