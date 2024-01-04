@@ -1,6 +1,6 @@
 package com.github.lewicki1990.phishingprotector.smsprocessing;
 
-import com.github.lewicki1990.phishingprotector.smsprocessing.mapping.SmsDTO;
+import com.github.lewicki1990.phishingprotector.smssource.mapping.SmsDTO;
 import com.github.lewicki1990.phishingprotector.antiphishingsubscription.ProtectionSubscriptionService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
