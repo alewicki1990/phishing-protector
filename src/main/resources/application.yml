@@ -9,3 +9,4 @@ anti-phishing-subscription:
 
 data-fetching:
   batch-size: 100
+  retry-time-in-msecs: 60000
