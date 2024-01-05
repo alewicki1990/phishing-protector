@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.lewicki1990.phishingprotector.smssource.Sms;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Component
+@Scope("prototype")
 public class SmsMapperImpl implements SmsMapper {
 
     private final ObjectMapper objectMapper;
@@ -42,7 +44,7 @@ public class SmsMapperImpl implements SmsMapper {
 
 
     @Override
-    public Sms convertSmsDTOToSMS(SmsDTO smsDTO) throws JsonProcessingException {
+    public Sms convertSmsDTOToSms(SmsDTO smsDTO) throws JsonProcessingException {
         String smsAttributesJson = transformSmsAttributesIntoJson(smsDTO);
         return new Sms(smsDTO.getId(), smsAttributesJson);
     }
