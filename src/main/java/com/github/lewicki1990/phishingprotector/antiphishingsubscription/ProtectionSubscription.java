@@ -1,7 +1,5 @@
 package com.github.lewicki1990.phishingprotector.antiphishingsubscription;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -60,6 +58,4 @@ public class ProtectionSubscription {
     public void setChangeDate(LocalDateTime changeDate) {
         this.changeDate = changeDate;
     }
-
-
 }

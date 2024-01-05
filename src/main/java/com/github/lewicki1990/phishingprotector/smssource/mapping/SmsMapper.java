@@ -10,7 +10,7 @@ public interface SmsMapper {
 
     SmsAttributes transformJsonIntoSmsAttributes(Sms sms) throws JsonProcessingException;
 
-    Sms convertSmsDTOToSMS(SmsDTO smsDTO) throws JsonProcessingException;
+    Sms convertSmsDTOToSms(SmsDTO smsDTO) throws JsonProcessingException;
 
     String transformSmsAttributesIntoJson(SmsDTO smsDTO) throws JsonProcessingException;
 

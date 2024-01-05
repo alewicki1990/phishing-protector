@@ -3,13 +3,13 @@ package com.github.lewicki1990.phishingprotector.smsprocessing.strategy;
 import com.github.lewicki1990.phishingprotector.antiphishingsubscription.ProtectionSubscriptionService;
 import com.github.lewicki1990.phishingprotector.smssource.mapping.SmsDTO;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
-@Slf4j
+@Log4j2
 @Component
 @AllArgsConstructor
-public class SmsDTOAntiPhishingSubscriptionProcessingStrategy implements SmsDTOProcessingStrategy{
+public class SmsDTOAntiPhishingSubscriptionProcessingManagementStrategy implements SmsDTOProcessingStrategy{
 
     private ProtectionSubscriptionService protectionSubscriptionService;
 
@@ -31,7 +31,7 @@ public class SmsDTOAntiPhishingSubscriptionProcessingStrategy implements SmsDTOP
                 return new NullSmsDTO();
             }
         } else {
-            log.info("[smsId={}, msisdn={}] Normal message not to activate service, recipient={}, message={}", smsId, sender, recipient, message);
+            log.info("[smsId={}] Normal message not to activate service.", smsId);
             return smsDTO;
         }
     }
