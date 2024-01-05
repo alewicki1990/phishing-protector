@@ -1,0 +1,17 @@
+spring:
+  config:
+    import:
+     - classpath:dbs-config.yml
+     - classpath:urls.yml
+
+anti-phishing-subscription:
+  phone-number: 802
+  activation-message: START
+  deactivation-message: STOP
+
+data-fetching:
+  batch-size: 100
+  retry-time-in-msecs: 60000
+
+phishing-detection:
+  url-detection-regex: "(https?|ftp|www)"
